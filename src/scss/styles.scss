@@ -1,0 +1,74 @@
+@import "_susy";
+
+
+/* Changing Susy default global settings */
+$susy: (
+  /* Tells Susy to use 12 columns */
+  columns: 12, 
+  /* Tells Susy to use border-box */
+  global-box-sizing: border-box 
+);
+
+/* Makes border-box properties */
+@include border-box-sizing;
+
+.container {
+    @include container;
+}
+
+.content {
+    @include span(8 );
+    background: lightgreen;
+}
+
+.sidebar {
+    @include span(4 last);
+    background: lightyellow;
+}
+
+@media only screen and (max-width: 720px) {
+    .content {
+        @include span(6);
+    }
+
+    .sidebar {
+        @include span(6 last);
+    }
+
+}
+
+.grid {
+  /* Adds a padding of 19px to each side of the .social container */
+  padding: gutter();
+  /* Adding a clearfix because all children elements are floated */
+  overflow: hidden;
+
+  .grid-item {
+    /* Telling Susy that there are 10 items, and each takes up 1 row */
+    @include gallery(1 of 10);
+    /* Another way to tell Susy that this is the last item in the row */
+    &:last-child {
+      @include last;
+    }
+
+    img {
+        width: 100%;
+    }
+  }
+}
+
+.four {
+  @include span(4 );
+  background: lightblue;
+}
+
+.eight {
+  @include span(8 last);
+  background: lightcoral;
+}
+
+.iso {
+  @include span(isolate 7 at 5);
+  background: lightpink;
+}
+
